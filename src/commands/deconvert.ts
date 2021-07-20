@@ -1,24 +1,17 @@
 import { ICommand } from '@phoihos/vsce-util';
+import { IConvertOption } from './convert';
 
 import * as vscode from 'vscode';
 
-export class ReverseConvertSelectionCommand implements ICommand {
-  public readonly id = 'csvToMdTable.reverseConvertSelection';
+export interface IDeconvertOption extends IConvertOption {
+  delimiter: string;
+}
 
-  public constructor() {}
+export class DeconvertCommand implements ICommand {
+  public readonly id = '';
 
-  public async execute(): Promise<void> {
-    const editor = vscode.window.activeTextEditor;
-    if (editor === undefined) return;
-
-    const selections = editor.selections.sort(
-      (a, b) => a.start.line - b.start.line || a.start.character - b.start.character
-    );
-
-    const texts = selections.map((selection) => {
-      return editor.document.getText(selection);
-    });
-
+  public async execute(option: IDeconvertOption): Promise<void> {
+    const { editor, selections, texts, delimiter } = option;
     const eol = editor.document.eol == vscode.EndOfLine.LF ? '\n' : '\r\n';
 
     const regexHyphens = /^\s*:?-+:?\s*\|/;
@@ -67,7 +60,7 @@ export class ReverseConvertSelectionCommand implements ICommand {
           line += ' '.repeat(indentWidth);
         }
 
-        line += cells.join(',');
+        line += cells.join(delimiter);
 
         csvRows.push(line);
       }

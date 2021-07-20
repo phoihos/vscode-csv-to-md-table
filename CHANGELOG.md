@@ -2,6 +2,11 @@
 
 All notable changes to the "CSV to Markdown Table" extension will be documented in this file.
 
+## [0.2.0] - 2021-07-20
+
+- Added : `Convert Markdown table to CSV with Delimiter...` command that can use other delimiter to convert
+- Changed : Command id changed to `csvToMdTable.deconvertSelection` from `csvToMdTable.reverseConvertSelection`
+
 ## [0.1.0] - 2021-07-19
 
 - Initial release

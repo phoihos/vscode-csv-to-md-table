@@ -18,7 +18,9 @@ function registerCommands(): vscode.Disposable {
   commandManager.register(new commands.ConvertSelectionCommand(convertCommand));
   commandManager.register(new commands.PastClipboardCommand(convertCommand));
 
-  commandManager.register(new commands.ReverseConvertSelectionCommand());
+  const deconvertCommand = new commands.DeconvertCommand();
+  commandManager.register(new commands.DeconvertSelectionCommand(deconvertCommand));
+  commandManager.register(new commands.DeconvertSelectionDelimiterCommand(deconvertCommand));
 
   return commandManager;
 }

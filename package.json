@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/phoihos/vscode-csv-to-md-table/blob/master/README.md",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.49.0"
   },
@@ -30,7 +30,8 @@
   "activationEvents": [
     "onCommand:csvToMdTable.convertSelection",
     "onCommand:csvToMdTable.pasteClipboard",
-    "onCommand:csvToMdTable.reverseConvertSelection"
+    "onCommand:csvToMdTable.deconvertSelection",
+    "onCommand:csvToMdTable.deconvertSelectionDelimiter"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -44,8 +45,12 @@
         "title": "Paste CSV as Markdown table"
       },
       {
-        "command": "csvToMdTable.reverseConvertSelection",
+        "command": "csvToMdTable.deconvertSelection",
         "title": "Convert Markdown table to CSV"
+      },
+      {
+        "command": "csvToMdTable.deconvertSelectionDelimiter",
+        "title": "Convert Markdown table to CSV with Delimiter..."
       }
     ]
   },

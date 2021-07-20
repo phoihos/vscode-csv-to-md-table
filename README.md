@@ -32,7 +32,8 @@ You can paste as Markdown table from the clipboard by launch with `Paste CSV as 
 ![Demo 2](./images/readme/demo2.gif)
 
 And you can convert Markdown table to CSV by launch with `Convert Markdown table to CSV` command on the Command Palette.
-> Convert to **comma-separated values** only
+> This command use `, (comma)` delimiter by default.  
+> **Use `Convert Markdown table to CSV with Delimiter...` command, if you want to use other delimiter.**
 
 ![Demo 3](./images/readme/demo3.gif)
 

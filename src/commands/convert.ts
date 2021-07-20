@@ -15,8 +15,8 @@ export class ConvertCommand implements ICommand {
 
   private readonly _splitter = new GraphemeSplitter();
 
-  public async execute(convertOption: IConvertOption): Promise<void> {
-    const { editor, selections, texts } = convertOption;
+  public async execute(option: IConvertOption): Promise<void> {
+    const { editor, selections, texts } = option;
     const eol = editor.document.eol == vscode.EndOfLine.LF ? '\n' : '\r\n';
 
     // see: https://jrgraphix.net/r/Unicode/
@@ -29,8 +29,8 @@ export class ConvertCommand implements ICommand {
 
       const indentWidth = selection.start.character;
 
-      const parseResult = Papa.parse(text);
-      const csv = parseResult.data as string[][];
+      const parsedResult = Papa.parse(text);
+      const csv = parsedResult.data as string[][];
 
       // Build tabular data and calculate column sizes
       const colWidths: number[] = [];
