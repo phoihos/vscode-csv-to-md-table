@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/phoihos/vscode-csv-to-md-table/blob/master/README.md",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "engines": {
     "vscode": "^1.49.0"
   },

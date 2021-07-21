@@ -18,7 +18,7 @@ export class DeconvertSelectionDelimiterCommand implements ICommand {
     {
       label: ';',
       description: '(Semicolon)',
-      delimiter: ','
+      delimiter: ';'
     },
     {
       label: '\\t',

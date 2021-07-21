@@ -17,7 +17,7 @@ export class ConvertCommand implements ICommand {
 
   public async execute(option: IConvertOption): Promise<void> {
     const { editor, selections, texts } = option;
-    const eol = editor.document.eol == vscode.EndOfLine.LF ? '\n' : '\r\n';
+    const eol = editor.document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
 
     // see: https://jrgraphix.net/r/Unicode/
     const regexCJK = /[\u3000-\u9fff\uac00-\ud7af\uff01-\uff60]/g;
@@ -86,8 +86,8 @@ export class ConvertCommand implements ICommand {
       });
 
       const options = {
-        undoStopBefore: i == selections.length - 1,
-        undoStopAfter: i == 0
+        undoStopBefore: i === selections.length - 1,
+        undoStopAfter: i === 0
       };
 
       await editor.edit((eb) => eb.replace(selection, tableRows.join(eol)), options);

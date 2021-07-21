@@ -2,6 +2,10 @@
 
 All notable changes to the "CSV to Markdown Table" extension will be documented in this file.
 
+## [0.2.1] - 2021-07-21
+
+- Fixed : Deconverting with `; (semicolon)` delimiter, but `, (comma)` delimiter is used
+
 ## [0.2.0] - 2021-07-20
 
 - Added : `Convert Markdown table to CSV with Delimiter...` command that can use other delimiter to convert

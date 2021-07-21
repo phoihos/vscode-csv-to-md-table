@@ -12,7 +12,7 @@ export class DeconvertCommand implements ICommand {
 
   public async execute(option: IDeconvertOption): Promise<void> {
     const { editor, selections, texts, delimiter } = option;
-    const eol = editor.document.eol == vscode.EndOfLine.LF ? '\n' : '\r\n';
+    const eol = editor.document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
 
     const regexHyphens = /^\s*:?-+:?\s*\|/;
     const regexCell = /((\\\||[^\|])*)\|/gu;
@@ -34,7 +34,7 @@ export class DeconvertCommand implements ICommand {
         if (row.startsWith('|')) {
           row = row.slice(1);
         }
-        if (!row.endsWith('|')) {
+        if (row.endsWith('|') === false) {
           row += '|';
         }
 
@@ -66,8 +66,8 @@ export class DeconvertCommand implements ICommand {
       }
 
       const options = {
-        undoStopBefore: i == selections.length - 1,
-        undoStopAfter: i == 0
+        undoStopBefore: i === selections.length - 1,
+        undoStopAfter: i === 0
       };
 
       await editor.edit((eb) => eb.replace(selection, csvRows.join(eol)), options);
