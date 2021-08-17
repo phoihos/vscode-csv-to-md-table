@@ -48,3 +48,7 @@ If you find any problems using this extension or you want to propose new feature
 ## Release Notes
 
 Detailed Release Notes are available [here](https://github.com/phoihos/vscode-csv-to-md-table/blob/master/CHANGELOG.md) or above **Changelog** tab.
+
+## Attributions
+
+Icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) from [www.flaticon.com](https://www.flaticon.com/)
