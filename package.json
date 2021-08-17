@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/phoihos/vscode-csv-to-md-table/issues"
   },
-  "homepage": "https://github.com/phoihos/vscode-csv-to-md-table/blob/master/README.md",
+  "homepage": "https://github.com/phoihos/vscode-csv-to-md-table#readme",
   "license": "MIT",
   "version": "0.2.1",
   "engines": {
