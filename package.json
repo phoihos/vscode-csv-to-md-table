@@ -52,7 +52,17 @@
         "command": "csvToMdTable.deconvertSelectionDelimiter",
         "title": "Convert Markdown table to CSV with Delimiter..."
       }
-    ]
+    ],
+    "configuration": {
+      "title": "CSV to Markdown Table",
+      "properties": {
+        "csvToMdTable.numberAlignRight": {
+          "type": "boolean",
+          "default": true,
+          "description": "Controls whether the cells with numbers align to the right when convert to Markdown table"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

@@ -4,6 +4,8 @@ import * as vscode from 'vscode';
 import * as Papa from 'papaparse';
 import GraphemeSplitter = require('grapheme-splitter');
 
+import { IConfiguration } from '../configuration';
+
 export interface IConvertOption {
   editor: vscode.TextEditor;
   selections: vscode.Selection[];
@@ -14,13 +16,13 @@ export class ConvertCommand implements ICommand {
   public readonly id = '';
 
   private readonly _splitter = new GraphemeSplitter();
+  private readonly _regexCJK = /[\u3000-\u9fff\uac00-\ud7af\uff01-\uff60]/g; // see: https://jrgraphix.net/r/Unicode/
+
+  public constructor(private readonly _config: Readonly<IConfiguration>) {}
 
   public async execute(option: IConvertOption): Promise<void> {
     const { editor, selections, texts } = option;
     const eol = editor.document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
-
-    // see: https://jrgraphix.net/r/Unicode/
-    const regexCJK = /[\u3000-\u9fff\uac00-\ud7af\uff01-\uff60]/g;
 
     let i = selections.length;
     while (i--) {
@@ -43,7 +45,7 @@ export class ConvertCommand implements ICommand {
 
           let width = this._splitter.countGraphemes(value);
           // CJK characters take up 2 width
-          width += value.match(regexCJK)?.length ?? 0;
+          width += value.match(this._regexCJK)?.length ?? 0;
 
           colWidths[j] = Math.max(width, colWidths[j] ?? 3);
 
@@ -56,7 +58,11 @@ export class ConvertCommand implements ICommand {
       // Build table
       const tableRows = tabularData.map((row, i) => {
         const cells = row.map((cell, j) => {
-          return cell.value + ' '.repeat(colWidths[j] - cell.width);
+          if (this._config.numberAlignRight && !isNaN(parseFloat(cell.value))) {
+            return ' '.repeat(colWidths[j] - cell.width) + cell.value;
+          } else {
+            return cell.value + ' '.repeat(colWidths[j] - cell.width);
+          }
         });
 
         // Pad empty cell(s)
