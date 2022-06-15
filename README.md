@@ -39,7 +39,11 @@ And you can convert Markdown table to CSV by launch with `Convert Markdown table
 
 ## Settings
 
-Currently, there is no settings.
+Table of contributed settings (prefix "csvToMdTable."):
+
+| Name             | Default | Description                                                                               |
+| ---------------- | ------- | ----------------------------------------------------------------------------------------- |
+| numberAlignRight | `false` | Controls whether the cells with numbers align to the right when convert to Markdown table |
 
 ## Issues
 

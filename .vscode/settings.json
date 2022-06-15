@@ -18,9 +18,6 @@
   "prettier.requireConfig": true,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[markdown]": {
-    "editor.defaultFormatter": null
-  }
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
   //#region
 }

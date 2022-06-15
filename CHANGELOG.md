@@ -2,6 +2,13 @@
 
 All notable changes to the "CSV to Markdown Table" extension will be documented in this file.
 
+## [0.3.0] - 2022-06-15
+
+- Added : A new align feature
+  - If `csvToMdTable.numberAlignRight` config value is true, the cells with numbers would align to the right.
+- Fixed : A bug that newlines is not converted
+- Updated : Internal dependencies
+
 ## [0.2.2] - 2022-01-21
 
 - Updated : Internal dependencies
