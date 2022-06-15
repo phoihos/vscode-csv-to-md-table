@@ -40,8 +40,8 @@ export class ConvertCommand implements ICommand {
       const tabularData = csv.map((row) => {
         const cells = row.map((cell, j) => {
           let value = cell.trim();
-          // Escape backslashes and pipes
-          value = value.replace(/(\\|\|)/g, '\\$1');
+          // Escape newlines, backslashes and pipes
+          value = value.replace(/(\r?\n)/g, '<br>').replace(/(\\|\|)/g, '\\$1');
 
           let width = this._splitter.countGraphemes(value);
           // CJK characters take up 2 width
