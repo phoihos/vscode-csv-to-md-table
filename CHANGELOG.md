@@ -2,6 +2,10 @@
 
 All notable changes to the "CSV to Markdown Table" extension will be documented in this file.
 
+## [0.3.1] - 2022-06-27
+
+- Fixed : The default value of `csvToMdTable.numberAlignRight` is not false.
+
 ## [0.3.0] - 2022-06-15
 
 - Added : A new align feature
