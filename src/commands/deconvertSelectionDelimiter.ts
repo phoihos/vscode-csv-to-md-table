@@ -38,7 +38,7 @@ export class DeconvertSelectionDelimiterCommand implements ICommand {
     const editor = vscode.window.activeTextEditor;
     if (editor === undefined) return;
 
-    const selections = editor.selections.sort(
+    const selections = [...editor.selections].sort(
       (a, b) => a.start.line - b.start.line || a.start.character - b.start.character
     );
 
