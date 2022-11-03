@@ -1,16 +1,16 @@
-import { ICommand } from '@phoihos/vsce-util';
-import { IConvertOption } from './convert';
+import { Command } from '@phoihos/vsce-util';
+import { ConvertOption } from './convert';
 
 import * as vscode from 'vscode';
 
-export interface IDeconvertOption extends IConvertOption {
+export interface DeconvertOption extends ConvertOption {
   delimiter: string;
 }
 
-export class DeconvertCommand implements ICommand {
+export class DeconvertCommand implements Command {
   public readonly id = '';
 
-  public async execute(option: IDeconvertOption): Promise<void> {
+  public async execute(option: DeconvertOption): Promise<void> {
     const { editor, selections, texts, delimiter } = option;
     const eol = editor.document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
 

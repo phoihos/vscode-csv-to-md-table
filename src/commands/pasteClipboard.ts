@@ -1,11 +1,11 @@
-import { ICommand } from '@phoihos/vsce-util';
+import { Command } from '@phoihos/vsce-util';
 
 import * as vscode from 'vscode';
 
-export class PastClipboardCommand implements ICommand {
+export class PastClipboardCommand implements Command {
   public readonly id = 'csvToMdTable.pasteClipboard';
 
-  public constructor(private readonly _convertCommand: ICommand) {}
+  public constructor(private readonly _convertCommand: Command) {}
 
   public async execute(): Promise<void> {
     const editor = vscode.window.activeTextEditor;

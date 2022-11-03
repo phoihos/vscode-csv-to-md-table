@@ -1,8 +1,8 @@
-import { ICommand } from '@phoihos/vsce-util';
+import { Command } from '@phoihos/vsce-util';
 
 import * as vscode from 'vscode';
 
-export class DeconvertSelectionDelimiterCommand implements ICommand {
+export class DeconvertSelectionDelimiterCommand implements Command {
   public readonly id = 'csvToMdTable.deconvertSelectionDelimiter';
 
   private readonly _delimiterPickOptions: vscode.QuickPickOptions = {
@@ -32,7 +32,7 @@ export class DeconvertSelectionDelimiterCommand implements ICommand {
     }
   ];
 
-  public constructor(private readonly _deconvertCommand: ICommand) {}
+  public constructor(private readonly _deconvertCommand: Command) {}
 
   public async execute(): Promise<void> {
     const editor = vscode.window.activeTextEditor;

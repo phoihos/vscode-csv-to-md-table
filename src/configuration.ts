@@ -2,15 +2,15 @@ import * as vscode from 'vscode';
 
 import * as vsceUtil from '@phoihos/vsce-util';
 
-export interface IConfiguration extends vsceUtil.IDisposable {
+export interface Configuration extends vsceUtil.DisposableLike {
   numberAlignRight: boolean;
 }
 
-class Configuration implements Partial<IConfiguration> {}
+class ConfigurationImpl implements Partial<Configuration> {}
 
-export default function getConfiguration(): Readonly<IConfiguration> {
-  return new Proxy(new Configuration() as IConfiguration, {
-    get: function (target: IConfiguration, prop: keyof IConfiguration) {
+export default function getConfiguration(): Readonly<Configuration> {
+  return new Proxy(new ConfigurationImpl() as Configuration, {
+    get: function (target: Configuration, prop: keyof Configuration) {
       return target[prop] ?? vscode.workspace.getConfiguration('csvToMdTable').get(prop);
     }
   });

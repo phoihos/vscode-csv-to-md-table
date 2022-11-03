@@ -1,26 +1,26 @@
-import { ICommand } from '@phoihos/vsce-util';
+import { Command } from '@phoihos/vsce-util';
 
 import * as vscode from 'vscode';
 import * as Papa from 'papaparse';
 import GraphemeSplitter = require('grapheme-splitter');
 
-import { IConfiguration } from '../configuration';
+import { Configuration } from '../configuration';
 
-export interface IConvertOption {
+export interface ConvertOption {
   editor: vscode.TextEditor;
   selections: vscode.Selection[];
   texts: string[];
 }
 
-export class ConvertCommand implements ICommand {
+export class ConvertCommand implements Command {
   public readonly id = '';
 
   private readonly _splitter = new GraphemeSplitter();
   private readonly _regexCJK = /[\u3000-\u9fff\uac00-\ud7af\uff01-\uff60]/g; // see: https://jrgraphix.net/r/Unicode/
 
-  public constructor(private readonly _config: Readonly<IConfiguration>) {}
+  public constructor(private readonly _config: Readonly<Configuration>) {}
 
-  public async execute(option: IConvertOption): Promise<void> {
+  public async execute(option: ConvertOption): Promise<void> {
     const { editor, selections, texts } = option;
     const eol = editor.document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
 

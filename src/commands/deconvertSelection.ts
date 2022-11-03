@@ -1,11 +1,11 @@
-import { ICommand } from '@phoihos/vsce-util';
+import { Command } from '@phoihos/vsce-util';
 
 import * as vscode from 'vscode';
 
-export class DeconvertSelectionCommand implements ICommand {
+export class DeconvertSelectionCommand implements Command {
   public readonly id = 'csvToMdTable.deconvertSelection';
 
-  public constructor(private readonly _deconvertCommand: ICommand) {}
+  public constructor(private readonly _deconvertCommand: Command) {}
 
   public async execute(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
